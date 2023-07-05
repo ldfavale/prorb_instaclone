@@ -1,6 +1,13 @@
 <% post.comments.each do |comment| %>
   <div class="comment">
     <span class="comment-author"><%= comment.user.username %></span>
-    <%= comment.body %>
+    <span class="comment-body"><%= comment.body %></span>
+    <%= turbo_frame_tag "comment-likes" do %>
+      <% if current_user && comment.is_liked_by(current_user) %>
+      <%= render template: "comments/likes/create", locals: { post: post, likeable: comment } %>
+      <% else %>
+      <%= render template: "comments/likes/destroy", locals: { post: post, likeable: comment } %>
+      <% end %>
+  <% end %>
   </div>
 <% end %>

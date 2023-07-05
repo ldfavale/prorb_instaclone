@@ -9,9 +9,9 @@
   <div class="post-actions">
     <%= turbo_frame_tag "post-likes" do %>
       <% if current_user && post.is_liked_by(current_user) %>
-      <%= button_to "", post_likes_path(post), class: "post-actions-unlike", method: :delete %>
+      <%= render template: "posts/likes/create", locals: { likeable: post } %>
       <% else %>
-      <%= button_to "", post_likes_path(post), class: "post-actions-like" %>
+      <%= render template: "posts/likes/destroy", locals: { likeable: post } %>
       <% end %>
   <% end %>
     <div class="post-actions-comments-<%=post.id%>" id="post-comments-count-<%=post.id%>"><%= pluralize(post.comments.count, "comment") %></div>
