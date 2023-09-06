@@ -9,11 +9,11 @@
   <div class="post-actions">
     <%= turbo_frame_tag "post-likes" do %>
       <% if current_user && post.is_liked_by(current_user) %>
-      <%= button_to "", post_likes_path(post), class: "post-actions-unlike", method: :delete %>
+        <%= button_to "", post_likes_path(post), class: "post-actions-unlike", method: :delete %>
       <% else %>
-      <%= button_to "", post_likes_path(post), class: "post-actions-like" %>
+        <%= button_to "", post_likes_path(post), class: "post-actions-like" %>
       <% end %>
-  <% end %>
+    <% end %>
     <div class="post-actions-comments-<%=post.id%>" id="post-comments-count-<%=post.id%>"><%= pluralize(post.comments.count, "comment") %></div>
   </div>
   <div class="post-comments-<%=post.id%>">
