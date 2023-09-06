@@ -1,4 +1,9 @@
 <%= turbo_frame_tag "post-likes" do %>
   <% post = @likeable || post %>
-  <%= button_to "", post_likes_path(post,id: post.id, type: post.class.to_s), class: "post-actions-like" %>
+  <%= button_to "", post_likes_path(post,id: post.id, type: post.class.to_s), class: "post-actions-like"  if post%>
+<% end %>
+
+<%= turbo_frame_tag "comment-likes" do %>
+  <% comment = @likeable || comment %>
+  <%= button_to "", comment_likes_path(comment,id: comment.id, type: comment.class.to_s), class: "comment-actions-like" %>
 <% end %>

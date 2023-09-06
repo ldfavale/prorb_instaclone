@@ -6,15 +6,19 @@ Rails.application.routes.draw do
         delete :destroy
       end
     end
+
+    resources :comments, only: [:create, :new, :index]
+
     
-    resources :comments, only: [:create, :new, :index] do
+  end
+
+  resources :comments, only: [:create, :new, :index] do
       resources :likes, only: :create do
         collection do
           delete :destroy
         end
       end
     end
-  end
 
   devise_for :users
   root "site#index"

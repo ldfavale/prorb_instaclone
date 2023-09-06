@@ -101,13 +101,18 @@ body {
   height: 24px;
 }
 
-.post-actions-like {
+.comment-actions-like, .comment-actions-unlike {
+  width: 14px;
+  height: 14px;
+}
+
+.post-actions-like, .comment-actions-like {
   background: url('like.png');
   background-size: contain;
   display: block;
 }
 
-.post-actions-unlike {
+.post-actions-unlike, .comment-actions-unlike {
   background: url('liked.png');
   background-size: contain;
   display: block;

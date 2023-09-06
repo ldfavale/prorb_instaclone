@@ -2,5 +2,12 @@
   <div class="comment">
     <span class="comment-author"><%= comment.user.username %></span>
     <%= comment.body %>
+    <%= turbo_frame_tag "comment-likes" do %>
+      <% if current_user && comment.is_liked_by(current_user) %>
+        <%= button_to "", comment_likes_path(comment,id: comment.id, type: comment.class.to_s), class: "comment-actions-unlike", method: :delete %>
+      <% else %>
+        <%= button_to "", comment_likes_path(comment,id: comment.id, type: comment.class.to_s), class: "comment-actions-like" %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>

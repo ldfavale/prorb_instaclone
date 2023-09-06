@@ -6,7 +6,7 @@ class LikesController < ApplicationController
 
   def destroy
     if %w(Comment Post).include?(params[:type])
-      @likeable = params[:type].constantize.find_by(id: params[:post_id],user_id: current_user.id)
+      @likeable = params[:type].constantize.find_by(id: params[:id],user_id: current_user.id)
       current_user.likes.where(likeable_id: params[:id], likeable_type: params[:type]).delete_all
     end
   end

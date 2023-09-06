@@ -2,3 +2,8 @@
   <% post = @likeable || post %>
   <%= button_to "", post_likes_path(post,id: post.id, type: post.class.to_s), class: "post-actions-unlike", method: :delete %>
 <% end %>
+
+<%= turbo_frame_tag "comment-likes" do %>
+  <% comment = @likeable || comment %>
+  <%= button_to "", comment_likes_path(comment,id: comment.id, type: comment.class.to_s), class: "comment-actions-unlike", method: :delete %>
+<% end %>
